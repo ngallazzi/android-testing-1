@@ -1,7 +1,10 @@
 package com.example.android.architecture.blueprints.todoapp.statistics
 
+import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import com.example.android.architecture.blueprints.todoapp.data.Task
 import junit.framework.Assert.assertEquals
+import org.hamcrest.Matchers.`is`
+
 import org.junit.Test
 
 class StatisticsUtilsTest {
@@ -20,7 +23,7 @@ class StatisticsUtilsTest {
 
     // If there's 2 completed tasks and 3 active tasks, then they are 40% completed and 60% active
     @Test
-    fun getActiveAndCompletedStats_activeAndCompleted_returnsFortySixty(){
+    fun getActiveAndCompletedStats_activeAndCompleted_returnsFortySixty() {
         val tasks = listOf<Task>(Task("task1", "", true),
                 Task("task2", "", true),
                 Task("task3", "", false),
@@ -28,8 +31,8 @@ class StatisticsUtilsTest {
                 Task("task5", "", false)
         )
         val result = getActiveAndCompletedStats(tasks)
-        assertEquals(40f, result.completedTasksPercent)
-        assertEquals(60f, result.activeTasksPercent)
+        assertThat(result.completedTasksPercent, `is`(40f))
+        assertThat(result.activeTasksPercent, `is`(60f))
     }
 
     @Test
