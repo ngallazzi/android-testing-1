@@ -9,8 +9,11 @@ class StatisticsUtilsTest {
     // If there's no completed task and and at least one active task should return 0%
     @Test
     fun getActiveAndCompletedStats_noCompleted_returnsZero() {
+        // GIVEN a list of tasks with a single active task
         val tasks = listOf<Task>(Task("task1", "", false))
+        // WHEN you call getActiveAndCompletedStats
         val result = getActiveAndCompletedStats(tasks)
+        // THEN there are 0% completed tasks and 100% active tasks
         assertEquals(0f, result.completedTasksPercent)
         assertEquals(100f, result.activeTasksPercent)
     }
