@@ -17,7 +17,7 @@ class StatisticsUtilsTest {
 
     // If there's 2 completed tasks and 3 active tasks, then they are 40% completed and 60% active
     @Test
-    fun getActiveAndCompletedStats_ActiveAndCompleted(){
+    fun getActiveAndCompletedStats_activeAndCompleted_returnsFortySixty(){
         val tasks = listOf<Task>(Task("task1", "", true),
                 Task("task2", "", true),
                 Task("task3", "", false),
