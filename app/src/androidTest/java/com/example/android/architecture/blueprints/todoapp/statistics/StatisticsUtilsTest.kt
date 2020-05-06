@@ -1,8 +1,10 @@
 package com.example.android.architecture.blueprints.todoapp.statistics
 
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import com.example.android.architecture.blueprints.todoapp.data.Task
 import junit.framework.Assert.assertEquals
+import org.hamcrest.Matchers
 import org.hamcrest.Matchers.`is`
 
 import org.junit.Test
@@ -49,5 +51,30 @@ class StatisticsUtilsTest {
         val result = getActiveAndCompletedStats(tasks)
         assertEquals(0f, result.completedTasksPercent)
         assertEquals(0f, result.activeTasksPercent)
+    }
+
+    @Test
+    fun main() {
+        val text = "Kotlin".getFirstAndLast()
+
+        val firstChar = text.getValue(FIRST_ID)
+        val lastChar = text.getValue(LAST_ID)
+
+        // TODO 2
+        assertThat(firstChar, `is`('K'))
+        assertThat(lastChar, `is`('n'))
+        println("First letter is $firstChar and $lastChar for second letter")
+    }
+
+    // TODO 1
+    private fun String.getFirstAndLast(): Map<String, Char> {
+        val first = this.first()
+        val last = this.last()
+        return mapOf(FIRST_ID to first, LAST_ID to last)
+    }
+
+    companion object{
+        const val FIRST_ID = "first"
+        const val LAST_ID = "last"
     }
 }
